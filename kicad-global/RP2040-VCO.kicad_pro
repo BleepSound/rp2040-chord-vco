@@ -346,7 +346,9 @@
     "pinned_footprint_libs": [
       "Kicad-perso"
     ],
-    "pinned_symbol_libs": []
+    "pinned_symbol_libs": [
+      "Kicad_Perso"
+    ]
   },
   "meta": {
     "filename": "RP2040-VCO.kicad_pro",
