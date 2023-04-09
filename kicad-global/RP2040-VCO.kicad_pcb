@@ -7379,7 +7379,7 @@
   (gr_text "RP2040 VCO\nV1.1 BleepSound\n2023" (at 121.5 102.9) (layer "B.SilkS") (tstamp 515ce60f-c6c6-45ed-8a13-a413b0148524)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
-  (gr_text "JLCJLCJLCJLC" (at 61.5 144.1) (layer "B.SilkS") (tstamp a327c3c2-bec2-4d20-8e2c-99385abde0c0)
+  (gr_text "JLCJLCJLCJLC" (at 70.3 137 90) (layer "B.SilkS") (tstamp a327c3c2-bec2-4d20-8e2c-99385abde0c0)
     (effects (font (size 1.5 1.5) (thickness 0.3)) (justify mirror))
   )
   (gr_text "RP2040 VCO\nV1.0 BleepSound\n2023" (at 121.5 34.5) (layer "B.SilkS") (tstamp a3ccf9a7-c443-45d6-a66f-d31c2155aa2d)
