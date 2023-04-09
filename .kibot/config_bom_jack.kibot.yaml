@@ -27,5 +27,5 @@ outputs:
   output_id: -jack
   options:
     renderer: render_3d
-    format: md
+    # format: md
     input: .kibot/Populate_jack.md
