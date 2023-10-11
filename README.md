@@ -32,17 +32,18 @@ You'll notice numbers along the central 3 position switch. The table below expla
 
 ## Build Informations
 
-:warning: When building modules, always do it in this order (from smallest component to highest):
-- diodes
-- resistors
-- DIP chips
-- capacitors (film/ceramic)
-- Electrolytic capacitors
+Full CMS build
 
-For the next part, always place them without soldering them on: 
+:warning: When building this module, do it in this order (from smallest component to highest):
+
+- Start by soldering all the CMS components in the order you want on both sides of the PCB.
+- Then do all the through hole components
+- To solder the headers, place them and place both PCBs in their final postion before fully soldering the pin headers/sockets.
+
+For the next parts, always place them without soldering them on: 
 - jacks, pots and switches that go throught the front panel
 
-Once placed, put in place the front panel, then fasten all components to it. Once this is done, you can solder them.
+Once placed, put the front panel in place, then fasten all components to it. Once this is done, you can solder all the remaining components.
 
 ### V1.1
 - you HAVE TO rotate SW1 180° for the built in LED to work.
