@@ -24,7 +24,7 @@ You'll notice numbers along the central 3 position switch. The table below expla
 
 ## Schematics
 
-![RP2040 VCO schematic](documentation/image/RP2040-VCO--schematic.svg)
+![RP2040 VCO schematic](documentation/image/RP2040-VCO--Schematic.svg)
 
 ## BoM
 
