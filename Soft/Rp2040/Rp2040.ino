@@ -12,13 +12,11 @@ int waveform = 0;
 int f0 = 35;//base osc frequency
 
 int j=0;
-int select_mode=0;  //0=chord without root , 1=chord with root,2=arpeggio
-int inversion=0;  //0-7
-int old_invAD=0;  //countermeasure of input ADC noise
-int new_invAD=0;  //countermeasure of input ADC noise
+int select_mode=0;//0=chord without root , 1=chord with root,2=arpeggio
+int inversion=0;//0-7
+int old_invAD=0;//countermeasure of input ADC noise
+int new_invAD=0;//countermeasure of input ADC noise
 bool push_sw, old_push_sw;//push sw
-unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
-unsigned long debounceDelay = 500;    // the debounce time; increase if the output flickers
 
 int qnt[32];
 int thr=0;//threshold number
@@ -163,6 +161,7 @@ for(byte i = 0; i < 6; i++){
   
 void loop()
 {
+  old_push_sw = push_sw;
   //  -------------------frequeny calculation-------------------------------
   adc = analogRead(26) * calb;//Correct resistance errors
   qnt_set();
@@ -315,72 +314,66 @@ void loop()
   }
 
  //----------------------select chord table-----------------
-  switch(chord_mode){
-    case 0:
-    select_table=0;//4 chord
-    break;
+switch(chord_mode){
+  case 0:
+  select_table=0;//4 chord
+  break;
 
-    case 1:
-    select_table=1;//4 chord
-    break;
+  case 1:
+  select_table=1;//4 chord
+  break;
 
-    case 2:
-    select_table=0;//3 chord
-    break;
+  case 2:
+  select_table=0;//3 chord
+  break;
 
-    case 3:
-    select_table=1;//3 chord
-    break;
+  case 3:
+  select_table=1;//3 chord
+  break;
 
-    case 4:
-    select_table=2;//3 chord
-    break;
+  case 4:
+  select_table=2;//3 chord
+  break;
 
-    case 5:
-    select_table=2;//4 chord
-    break;
+  case 5:
+  select_table=2;//4 chord
+  break;
 
-  }
+}
 
   //----------------------mode select-----------------
-  if (digitalRead(0) == 1 && digitalRead(1) == 1) {
-    select_mode = 1;//chord with bass
-  }
-  else if (digitalRead(0) == 0 && digitalRead(1) == 1) {
-    select_mode = 2;//arpeggio
-  }
-  else if (digitalRead(0) == 1 && digitalRead(1) == 0) {
-    select_mode = 0;//chord without bass
-  }
+if (digitalRead(0) == 1 && digitalRead(1) == 1) {
+  select_mode = 1;//chord with bass
+}
+else if (digitalRead(0) == 0 && digitalRead(1) == 1) {
+  select_mode = 2;//arpeggio
+}
+else if (digitalRead(0) == 1 && digitalRead(1) == 0) {
+  select_mode = 0;//chord without bass
+}
 
 
-  if(chord_mode==2 ||chord_mode==3 ||chord_mode==4){//set each oscillator frequency
-    osc_scale_rate[0]=freq_rate[chord_3[select_chord3[select_table][thr%6]][0]]*osc_inverse[0];
-    osc_scale_rate[1]=freq_rate[chord_3[select_chord3[select_table][thr%6]][1]]*osc_inverse[1];
-    osc_scale_rate[2]=freq_rate[chord_3[select_chord3[select_table][thr%6]][2]]*osc_inverse[2];
-  };
-  if(chord_mode==0 ||chord_mode==1||chord_mode==5){
-    osc_scale_rate[0]=freq_rate[chord_4[select_chord4[select_table][thr%6]][0]]*osc_inverse[0];
-    osc_scale_rate[1]=freq_rate[chord_4[select_chord4[select_table][thr%6]][1]]*osc_inverse[1];
-    osc_scale_rate[2]=freq_rate[chord_4[select_chord4[select_table][thr%6]][2]]*osc_inverse[2];
-    osc_scale_rate[3]=freq_rate[chord_4[select_chord4[select_table][thr%6]][3]]*osc_inverse[3];
-  };
+if(chord_mode==2 ||chord_mode==3 ||chord_mode==4){//set each oscillator frequency
+  osc_scale_rate[0]=freq_rate[chord_3[select_chord3[select_table][thr%6]][0]]*osc_inverse[0];
+  osc_scale_rate[1]=freq_rate[chord_3[select_chord3[select_table][thr%6]][1]]*osc_inverse[1];
+  osc_scale_rate[2]=freq_rate[chord_3[select_chord3[select_table][thr%6]][2]]*osc_inverse[2];
+};
+if(chord_mode==0 ||chord_mode==1||chord_mode==5){
+  osc_scale_rate[0]=freq_rate[chord_4[select_chord4[select_table][thr%6]][0]]*osc_inverse[0];
+  osc_scale_rate[1]=freq_rate[chord_4[select_chord4[select_table][thr%6]][1]]*osc_inverse[1];
+  osc_scale_rate[2]=freq_rate[chord_4[select_chord4[select_table][thr%6]][2]]*osc_inverse[2];
+  osc_scale_rate[3]=freq_rate[chord_4[select_chord4[select_table][thr%6]][3]]*osc_inverse[3];
+};
 
   //  -------------------push sw , change wavetable-------------------------------
   push_sw = digitalRead(6);
-
-  if (push_sw == 0 && old_push_sw == 1) { //when push sw ON
-    lastDebounceTime = millis();
-  }
-  if ((millis() - lastDebounceTime) > debounceDelay) {
+  if (push_sw == 0 && old_push_sw == 1) {//when push sw ON
     waveform++;//change waveform
     if (waveform > 7) {
       waveform = 0;
     }
-    table_set();
+      table_set();
   }
-
-  old_push_sw = push_sw;
 }
 
 void qnt_set(){//quantize v/oct input
