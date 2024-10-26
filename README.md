@@ -1,8 +1,3 @@
----
-permalink: /index.html
-layout: single
----
-
 # RP2040 VCO (Clone, made by Hagiwo)
 
 VCO clone, originally made by HAGIWO ([link](https://note.com/solder_state/n/n64b91a171218) in japanese)
