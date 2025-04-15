@@ -40,7 +40,11 @@ outputs:
     - References
     - Value
     - Quantity Per PCB
-    - Comments
+    - field: manf
+      name: Manufacturer
+    - field: manf#
+      name: Manufacturer ref
+    - Links
     group_fields:
       - Value
       - Footprint
@@ -56,6 +60,10 @@ outputs:
   type: ibom
   dir: bom
   options:
+    layer_view: 'F'
+    checkboxes: 'Placed'
+    dark_mode: true
+    highlight_pin1: 'selected'
     output: '%f_V%sr--iBoM.html'
 
 - name: basic_pcbdraw_png_set_black_hasl_top
