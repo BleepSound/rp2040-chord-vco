@@ -94,7 +94,7 @@ outputs:
   options:
     ray_tracing: true
     orthographic: true
-    zoom: 3
+    zoom: 1
 - name: basic_render_3d_30deg
   comment: 3D view from 30 degrees
   type: render_3d
@@ -104,7 +104,7 @@ outputs:
     ray_tracing: true
     rotate_x: 3
     rotate_z: -2
-    zoom: 3
+    zoom: 1
 - name: basic_render_3d_bottom
   comment: 3D view from bottom
   type: render_3d
@@ -113,7 +113,7 @@ outputs:
     ray_tracing: true
     orthographic: true
     view: bottom
-    zoom: 3
+    zoom: 1
 
 # - name: JLCPCB_gerbers
 #   comment: Gerbers compatible with JLCPCB

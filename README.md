@@ -1,5 +1,7 @@
 # RP2040 VCO (Clone, made by Hagiwo)
 
+Latest documentation available at https://bleepsound.github.io
+
 VCO clone, originally made by HAGIWO ([link](https://note.com/solder_state/n/n64b91a171218) in japanese)
 
 RP2040 chord VCO clone in SMD.
